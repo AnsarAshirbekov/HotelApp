@@ -28,5 +28,13 @@ namespace HotelAppLibrary.DataBase
         }
 
         // Implement GetRoomByTypeId method the same way
+        public RoomTypeModel GetRoomByTypeId(int id)
+        {
+            return _db.LoadData<RoomTypeModel, dynamic>
+                ("dbo.sp_RoomTypes_GetById",
+                new { id },
+                connectionStringName,
+                true).First();
+        }
     }
 }
